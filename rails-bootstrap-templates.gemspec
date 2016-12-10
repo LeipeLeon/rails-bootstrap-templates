@@ -29,6 +29,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails"
   spec.add_dependency "haml-rails"
+  spec.add_dependency "bootstrap-generators"
 
   spec.add_development_dependency "bundler", "~> 1.12"
 end

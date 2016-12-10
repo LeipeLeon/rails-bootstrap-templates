@@ -12,6 +12,9 @@ gem 'rails-bootstrap-templates', github: 'LeipeLeon/rails-bootstrap-templates', 
 And then execute:
 
     $ bundle
+    $ spring stop
+    $ rails generate bootstrap:install --template-engine=haml  --stylesheet-engine=scss --skip-turbolinks
+    $ rm lib/templates
 
 ## Usage
 
