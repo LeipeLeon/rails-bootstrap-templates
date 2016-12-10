@@ -10,7 +10,7 @@
     %thead
       %tr
 <% for attribute in attributes -%>
-        %th <%= attribute.human_name %>
+        %th= t(".<%= attribute.name %>", default: <%= class_name %>.human_attribute_name(:<%= attribute.name %>))
 <% end -%>
         %th
 
