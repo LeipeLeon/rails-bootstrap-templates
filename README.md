@@ -16,6 +16,12 @@ And then execute:
     $ rails generate bootstrap:install --template-engine=haml  --stylesheet-engine=scss --skip-turbolinks
     $ rm lib/templates
 
+Optional:
+
+```ruby
+gem 'bootstrap_form', github: "bootstrap-ruby/rails-bootstrap-forms", branch: "master"
+```
+
 ## Usage
 
 ```shell
