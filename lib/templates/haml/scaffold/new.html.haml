@@ -3,6 +3,6 @@
     = link_to <%= index_helper %>_path, :class => 'btn btn-default' do
       %span.glyphicon.glyphicon-list-alt
       =t('.back', :default => t("helpers.links.back"))
-  %h1= t '.title', default: " New <%= singular_table_name %>"
+  %h1= t '.title', default: [t("helpers.links.new", default: "New"), <%= class_name %>.model_name.human].join(' ')
 
 = render 'form'
