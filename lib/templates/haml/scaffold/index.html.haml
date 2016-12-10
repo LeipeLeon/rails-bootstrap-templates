@@ -1,0 +1,32 @@
+.page-header
+  %span.pull-right
+    = link_to new_<%= singular_table_name %>_path, class: 'btn btn-primary' do
+      %i.glyphicon.glyphicon-plus
+      = t('.new', default: t("helpers.links.new"))
+  %h1= t '.title', default: "Listing <%= plural_table_name %>"
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+<% for attribute in attributes -%>
+        %th <%= attribute.human_name %>
+<% end -%>
+        %th
+
+    %tbody
+      - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+        %tr
+<% for attribute in attributes -%>
+          %td= <%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
+          %td.text-right
+            = link_to <%= singular_table_name %>, class: 'btn btn-default btn-sm' do
+              %i.glyphicon.glyphicon-eye-open
+              = t('.show', default: t("helpers.links.show"))
+            = link_to edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'btn btn-primary btn-sm' do
+              %i.glyphicon.glyphicon-pencil
+              = t('.edit', default: t("helpers.links.edit"))
+            = link_to <%= singular_table_name %>, method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger btn-sm' do
+              %i.glyphicon.glyphicon-trash
+              = t('.destroy', default: t("helpers.links.destroy"))
