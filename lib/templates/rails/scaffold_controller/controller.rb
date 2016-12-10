@@ -31,7 +31,11 @@ class <%= controller_class_name %>Controller < ApplicationController
 
     respond_to do |format|
       if @<%= orm_instance.save %>
-        format.html { redirect_to <%= index_helper %>_url, notice: <%= "'#{human_name} was successfully created.'" %> }
+        if params[:return_to]
+          format.html { redirect_to params[:return_to], notice: <%= "'#{human_name} was successfully created.'" %> }
+        else
+          format.html { redirect_to <%= index_helper %>_url, notice: <%= "'#{human_name} was successfully created.'" %> }
+        end
         format.json { render :show, status: :created, location: <%= "@#{singular_table_name}" %> }
       else
         format.html { render :new }
@@ -45,7 +49,11 @@ class <%= controller_class_name %>Controller < ApplicationController
   def update
     respond_to do |format|
       if @<%= orm_instance.update("#{singular_table_name}_params") %>
-        format.html { redirect_to <%= index_helper %>_url, notice: <%= "'#{human_name} was successfully updated.'" %> }
+        if params[:return_to]
+          format.html { redirect_to params[:return_to], notice: <%= "'#{human_name} was successfully updated.'" %> }
+        else
+          format.html { redirect_to <%= index_helper %>_url, notice: <%= "'#{human_name} was successfully updated.'" %> }
+        end
         format.json { render :show, status: :ok, location: <%= "@#{singular_table_name}" %> }
       else
         format.html { render :edit }
@@ -59,7 +67,11 @@ class <%= controller_class_name %>Controller < ApplicationController
   def destroy
     @<%= orm_instance.destroy %>
     respond_to do |format|
-      format.html { redirect_to <%= index_helper %>_url, notice: <%= "'#{human_name} was successfully destroyed.'" %> }
+      if params[:return_to]
+        format.html { redirect_to params[:return_to], notice: <%= "'#{human_name} was successfully destroyed.'" %> }
+      else
+        format.html { redirect_to <%= index_helper %>_url, notice: <%= "'#{human_name} was successfully destroyed.'" %> }
+      end
       format.json { head :no_content }
     end
   end

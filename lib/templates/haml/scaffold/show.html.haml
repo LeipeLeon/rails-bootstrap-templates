@@ -1,8 +1,13 @@
 .page-header
   %span.pull-right
-    = link_to <%= index_helper %>_path, :class => 'btn btn-default' do
-      %span.glyphicon.glyphicon-list-alt
-      =t('.back', :default => t("helpers.links.back"))
+    - if params[:return_to]
+      = link_to params[:return_to], :class => 'btn btn-default' do
+        %span.glyphicon.glyphicon-list-alt
+        =t('.back', :default => t("helpers.links.back"))
+    - else
+      = link_to <%= index_helper %>_path, :class => 'btn btn-default' do
+        %span.glyphicon.glyphicon-list-alt
+        =t('.back', :default => t("helpers.links.back"))
     = link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), :class => 'btn btn-primary' do
       %span.glyphicon.glyphicon-pencil
       =t('.edit', :default => t("helpers.links.edit"))

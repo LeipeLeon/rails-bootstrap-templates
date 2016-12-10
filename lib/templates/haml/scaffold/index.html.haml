@@ -22,13 +22,13 @@
             %td= <%= singular_table_name %>.<%= attribute.name %>
 <% end -%>
             %td.text-right
-              = link_to <%= singular_table_name %>, class: 'btn btn-default btn-sm' do
+              = link_to <%= singular_table_name %>_path(<%= singular_table_name %>, return_to: <%= index_helper %>_path), class: 'btn btn-default btn-sm' do
                 %i.glyphicon.glyphicon-eye-open
                 %span.hidden-xs= t('.show', default: t("helpers.links.show"))
-              = link_to edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'btn btn-primary btn-sm' do
+              = link_to edit_<%= singular_table_name %>_path(<%= singular_table_name %>, return_to: <%= index_helper %>_path), class: 'btn btn-primary btn-sm' do
                 %i.glyphicon.glyphicon-pencil
                 %span.hidden-xs= t('.edit', default: t("helpers.links.edit"))
-              = link_to <%= singular_table_name %>, method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger btn-sm' do
+              = link_to <%= singular_table_name %>_path(<%= singular_table_name %>, return_to: <%= index_helper %>_path), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger btn-sm' do
                 %i.glyphicon.glyphicon-trash
                 %span.hidden-xs= t('.destroy', default: t("helpers.links.destroy"))
       - else

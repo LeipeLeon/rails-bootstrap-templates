@@ -1,5 +1,6 @@
 = bootstrap_form_for @<%= singular_table_name %>, html: { multipart: true }, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10" do |f|
-  -if @<%= singular_table_name %>.errors.any?
+  = hidden_field_tag :return_to, params[:return_to]
+  - if @<%= singular_table_name %>.errors.any?
     .alert.alert-danger.alert-dismissable{:role => "alert"}
       %button.close{:type => "button", :data => {:dismiss => "alert"} }
         %span{:aria => {:hidden => "true"} } &times;
